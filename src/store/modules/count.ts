@@ -1,13 +1,20 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+interface Istate {
+  age: number
+  name: string
+}
+
+const initialState: Istate = {
+  age: 12,
+  name: 'yz'
+}
 
 const countStore = createSlice({
   name: 'count',
-  initialState: {
-    age: 12,
-    name: 'yz'
-  },
+  initialState,
   reducers: {
-    changeAge(state, { payload }) {
+    changeAge(state, { payload }: PayloadAction<number>) {
       state.age = payload
     }
   }
